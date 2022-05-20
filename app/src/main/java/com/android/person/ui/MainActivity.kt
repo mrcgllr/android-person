@@ -50,7 +50,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
             observe(personsLiveData) { persons ->
                 personAdapter.setPersons(persons.toSet().toList())
             }
-
             observe(errorLiveData) { errorMessage ->
                 showErrorDialog(errorMessage) {
                     fetchPersons()
