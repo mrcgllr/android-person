@@ -42,8 +42,13 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     private fun observe() {
         with(mainVM) {
+            binding.apply {
+                vm = this@with
+                lifecycleOwner = this@MainActivity
+            }
+
             observe(personsLiveData) { persons ->
-                personAdapter.setPersons(persons)
+                personAdapter.setPersons(persons.toSet().toList())
             }
 
             observe(errorLiveData) { errorMessage ->

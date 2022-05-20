@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">android-person</string>
     <string name="refresh">Refresh</string>
+    <string name="empty_message">There are no person.</string>
 </resources>

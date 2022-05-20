@@ -25,6 +25,9 @@ class MainViewModel @Inject constructor(private val repository: PersonRepository
     private val _personsLiveData: MutableLiveData<List<Person>> = MutableLiveData()
     val personsLiveData: LiveData<List<Person>> = _personsLiveData
 
+    private val _isPersonsEmptyLiveData: MutableLiveData<Boolean> = MutableLiveData(false)
+    val isPersonsEmptyLiveData: LiveData<Boolean> = _isPersonsEmptyLiveData
+
     fun fetchPersons() {
         viewModelScope.launch {
             handleLoading(LoadingType.PROGRESS)
@@ -37,9 +40,10 @@ class MainViewModel @Inject constructor(private val repository: PersonRepository
     }
 
     fun handleResponse(fetchResponse: FetchResponse?) {
-        fetchResponse?.let { response ->
-            _personsLiveData.value = response.people
-            nextPage = response.next
+        fetchResponse?.apply {
+            _personsLiveData.value = people
+            _isPersonsEmptyLiveData.value = people.isEmpty()
+            nextPage = next
         }
     }
 
