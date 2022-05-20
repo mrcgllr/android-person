@@ -4,5 +4,5 @@ import com.android.person.data.source.FetchCompletionHandler
 
 interface PersonRepository {
 
-    suspend fun fetchPerson(nextPage: String?, responseHandle: FetchCompletionHandler)
+    suspend fun fetchPerson(nextPage: String?, completionHandler: FetchCompletionHandler)
 }
