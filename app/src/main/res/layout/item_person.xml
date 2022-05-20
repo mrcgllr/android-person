@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
         android:layout_marginVertical="4dp"
-        android:text="@{item.fullName}"
+        android:text="@{@string/param_person_with_id(item.fullName,item.id)}"
         android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
         tools:text="Meriç Güller" />
 </layout>
